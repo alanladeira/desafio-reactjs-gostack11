@@ -5,8 +5,6 @@ Nesse desafio, você deve criar uma aplicação para treinar o que você aprende
 
 Agora você deve continuar desenvolvendo a aplicação que irá armazenar repositórios do seu portfólio, que você já desenvolveu o backend no último desafio utilizando o Node.js.
 
-Essa será uma aplicação para armazenar repositórios do seu portfólio, que irá permitir a criação, listagem, atualização e remoção dos repositórios, e além disso permitir que os repositórios possam receber "likes".
-
 ## Iniciar o projeto
 - git clone https://github.com/alanladeira/desafio-reactjs-gostack11.git
 - cd desafio-node-gostack11
