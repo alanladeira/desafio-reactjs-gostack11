@@ -1,29 +1,84 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+
+import api from "./services/api";
 
 import "./styles.css";
 
 function App() {
-  async function handleAddRepository() {
-    // TODO
+  const [repositories, setRepositories] = useState([]);
+  const [title, setTitle] = useState("");
+  const [url, setUrl] = useState("");
+  const [techs, setTechs] = useState("");
+
+  useEffect(() => {
+    api.get("repositories").then((response) => {
+      setRepositories(response.data);
+    });
+  }, []);
+
+  async function handleAddRepository(e) {
+    e.preventDefault();
+    const response = await api.post("repositories", {
+      title,
+      url,
+      techs,
+    });
+
+    setRepositories([...repositories, response.data]);
+    setTitle("");
+    setTechs("");
+    setUrl("");
   }
 
   async function handleRemoveRepository(id) {
-    // TODO
+    api.delete(`repositories/${id}`);
+
+    setRepositories(repositories.filter((rep) => rep.id !== id));
   }
 
   return (
-    <div>
+    <div className="container">
       <ul data-testid="repository-list">
-        <li>
-          Repositório 1
-
-          <button onClick={() => handleRemoveRepository(1)}>
-            Remover
-          </button>
-        </li>
+        {repositories.map((rep) => (
+          <li key={rep.id}>
+            {rep.title}
+            <button
+              className="button"
+              onClick={() => handleRemoveRepository(rep.id)}
+            >
+              Remover
+            </button>
+          </li>
+        ))}
       </ul>
+      <form onSubmit={handleAddRepository}>
+        <input
+          type="text"
+          placeholder="Titulo"
+          value={title}
+          onChange={(e) => {
+            setTitle(e.target.value);
+          }}
+        />
+        <input
+          type="text"
+          placeholder="Url"
+          value={url}
+          onChange={(e) => {
+            setUrl(e.target.value);
+          }}
+        />
+        <input
+          type="text"
+          placeholder="Tecnologias"
+          value={techs}
+          onChange={(e) => {
+            setTechs(e.target.value);
+          }}
+        />
 
-      <button onClick={handleAddRepository}>Adicionar</button>
+        <button type="submit">Adicionar</button>
+      </form>
     </div>
   );
 }

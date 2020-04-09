@@ -6,34 +6,70 @@
 
 body {
   font-size: 14px;
-}
-
-div {
-  width: 100%;
-  margin: 20px;
-}
-
-div li {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #212121;
+}
+
+.container {
+  background-color: #424242;
+  padding: 40px;
+  border-radius: 7px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  color: #fff;
+}
+
+.container ul li {
+  text-decoration: none;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
 }
 
-div li + li {
-  margin-top: 15px;
+.container ul li + li {
+  margin-top: 10px;
+  border-top: 1px solid #fff;
+  padding-top: 10px;
 }
 
-button {
-  background: #7159c1;
+.button {
+  background: #ef5350;
   color: #fff;
   border: 0;
   padding: 10px 15px;
   cursor: pointer;
-  margin-top: 15px;
   font-weight: bold;
-  font-size: 14px;
+  font-size: 12px;
+  border-radius: 7px;
+  margin-left: 10px;
 }
 
-div li button {
-  margin: 0 15px;
-  background: #ca4949;
+.container form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.container form input {
+  border-radius: 7px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 10px 15px;
+  margin-top: 10px;
+}
+
+button[type="submit"] {
+  background: #7159c1;
+  border-radius: 7px;
+  margin-top: 10px;
+  padding: 10px 15px;
+  border: 0;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 14px;
+  color: #fff;
+  outline: none;
 }
